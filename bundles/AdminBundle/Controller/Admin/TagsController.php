@@ -42,7 +42,11 @@ class TagsController extends AdminController
         $tag = new Tag();
         $tag->setName(strip_tags($request->get('text')));
         $tag->setParentId(intval($request->get('parentId')));
+        $event = new TagEvent($tag);
+        \Pimcore::getEventDispatcher()->dispatch(TagEvents::PRE_ADD, $event);
         $tag->save();
+        $event = new TagEvent($tag);
+        \Pimcore::getEventDispatcher()->dispatch(TagEvents::POST_ADD, $event);
 
         return $this->adminJson(['success' => true, 'id' => $tag->getId()]);
     }
@@ -60,7 +64,10 @@ class TagsController extends AdminController
     {
         $tag = Tag::getById($request->get('id'));
         if ($tag) {
+            $event = new TagEvent($tag);
+            \Pimcore::getEventDispatcher()->dispatch(TagEvents::PRE_DELETE, $event);
             $tag->delete();
+            \Pimcore::getEventDispatcher()->dispatch(TagEvents::POST_DELETE, $event);
 
             return $this->adminJson(['success' => true]);
         } else {
