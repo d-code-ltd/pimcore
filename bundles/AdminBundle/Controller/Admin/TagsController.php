@@ -96,7 +96,11 @@ class TagsController extends AdminController
                 $tag->setName(strip_tags($request->get('text')));
             }
 
+            $event = new TagEvent($tag);
+            \Pimcore::getEventDispatcher()->dispatch(TagEvents::PRE_UPDATE, $event);
             $tag->save();
+            $event = new TagEvent($tag);
+            \Pimcore::getEventDispatcher()->dispatch(TagEvents::POST_UPDATE, $event);
 
             return $this->adminJson(['success' => true]);
         } else {
