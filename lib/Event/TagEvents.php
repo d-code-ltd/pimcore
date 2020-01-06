@@ -44,4 +44,69 @@ final class TagEvents
      */
     const POST_REMOVE_FROM_ELEMENT = 'pimcore.tag.postRemoveFromElement';
 
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const PRE_ADD = 'pimcore.tag.preAdd';
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const POST_ADD = 'pimcore.tag.postAdd';
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const POST_ADD_FAILURE = 'pimcore.tag.postAddFailure';
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const PRE_UPDATE = 'pimcore.tag.preUpdate';
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const POST_UPDATE = 'pimcore.tag.postUpdate';
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const POST_UPDATE_FAILURE = 'pimcore.tag.postUpdateFailure';
+
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const PRE_DELETE = 'pimcore.tag.preDelete';
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const POST_DELETE = 'pimcore.tag.postDelete';
+
+    /**
+     * @Event("Pimcore\Event\Model\TagEvent")
+     *
+     * @var string
+     */
+    const POST_DELETE_FAILURE = 'pimcore.tag.postDeleteFailure';
+
+
 }
