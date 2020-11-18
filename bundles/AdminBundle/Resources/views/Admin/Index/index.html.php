@@ -751,6 +751,7 @@ $scripts = array(
 <?php // pimcore constants ?>
 <script>
     pimcore.settings = <?= json_encode($this->settings, JSON_PRETTY_PRINT) ?>;
+    try {parent.pimcore} catch (err) {parent=window}
 </script>
 
 <script src="<?= $view->router()->path('pimcore_admin_misc_jsontranslationssystem', ['language' => $language, '_dc' => \Pimcore\Version::getRevision()])?>"></script>

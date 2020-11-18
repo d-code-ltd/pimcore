@@ -457,6 +457,10 @@ class IndexController extends AdminController implements EventedControllerInterf
 
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        $event->getResponse()->headers->set('X-Frame-Options', 'deny', true);
+        if ($this->getParameter('x_frame_option')) {
+            $event->getResponse()->headers->set('Content-Security-Policy', $this->getParameter('x_frame_option'), true);
+        } else {
+            $event->getResponse()->headers->set('X-Frame-Options', 'deny', true);
+        }
     }
 }
